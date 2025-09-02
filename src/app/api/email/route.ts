@@ -2,7 +2,28 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// 🔹 Función auxiliar para CORS
+function corsResponse(body, status = 200) {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "https://www.mymsoluciones.mx", // 🔹 pon tu dominio cuando lo tengas
+      "Access-Control-Allow-Methods": "POST,OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type",
+    },
+  })
+}
+
+// 🔹 Manejo de preflight CORS
+export async function OPTIONS() {
+  return corsResponse({}, 200)
+}
+
 export async function POST(request: Request) {
+    
+    
+
   try {
     const { name, phone, email, message } = await request.json();
 
