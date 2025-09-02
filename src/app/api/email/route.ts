@@ -8,7 +8,7 @@ function corsResponse(body, status = 200) {
     status,
     headers: {
       "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "https://www.mymsoluciones.mx", // 🔹 pon tu dominio cuando lo tengas
+      "Access-Control-Allow-Origin": "*", // 🔹 pon tu dominio cuando lo tengas
       "Access-Control-Allow-Methods": "POST,OPTIONS",
       "Access-Control-Allow-Headers": "Content-Type",
     },
